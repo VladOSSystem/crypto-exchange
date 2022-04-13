@@ -1,0 +1,35 @@
+/*------------------*
+# Main Content
+*------------------*/
+
+.main-content {
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.buttons {
+    &__color {
+        background-color: var(--button-color);
+        color: white;
+        max-width: 362px;
+        height: 50px;
+        border-radius: 10px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__color-outline {
+        border: 1px solid var(--button-color);
+        color: var(--button-color);
+        box-sizing: border-box;
+        border-radius: 10px;
+        height: 50px;
+        max-width: 187px;
+    }
+}

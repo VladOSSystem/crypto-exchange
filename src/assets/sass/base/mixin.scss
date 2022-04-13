@@ -1,0 +1,97 @@
+// Media
+
+$s1160: 1160px;
+$s991: 991px;
+$s767: 767px;
+$s667: 667px;
+$s640: 640px;
+$s568: 568px;
+$s480: 480px;
+$s414: 414px;
+$s375: 375px;
+$s360: 360px;
+$s320: 320px;
+
+@mixin screen($res) {
+  @media (max-width: $res) {
+    @content;
+  }
+}
+
+@mixin res_1160 {
+  @media (max-width: $s1160) {
+    @content;
+  }
+}
+
+@mixin res_991 {
+  @media (max-width: $s991) {
+    @content;
+  }
+}
+
+@mixin res_767 {
+  @media (max-width: $s767) {
+    @content;
+  }
+}
+
+@mixin res_667 {
+  @media (max-width: $s667) {
+    @content;
+  }
+}
+
+@mixin res_640 {
+  @media (max-width: $s640) {
+    @content;
+  }
+}
+
+@mixin res_568 {
+  @media (max-width: $s568) {
+    @content;
+  }
+}
+
+@mixin res_480 {
+  @media (max-width: $s480) {
+    @content;
+  }
+}
+
+@mixin res_414 {
+  @media (max-width: $s414) {
+    @content;
+  }
+}
+
+@mixin res_375 {
+  @media (max-width: $s375) {
+    @content;
+  }
+}
+
+@mixin res_360 {
+  @media (max-width: $s360) {
+    @content;
+  }
+}
+
+@mixin res_320 {
+  @media (max-width: $s320) {
+    @content;
+  }
+}
+
+
+
+// $resolution: (1160, 991, 767, 667, 640, 568, 480, 414, 375, 360, 320);
+
+// @each $value in $resolution {
+//   @mixin res_#{$value} {
+//     @media (max-width: $value + px) {
+//       @content;
+//     }
+//   }
+// }

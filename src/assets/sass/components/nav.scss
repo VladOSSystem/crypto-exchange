@@ -1,0 +1,268 @@
+/*------------------*
+# Nav
+*------------------*/
+.main-hr {
+    margin-top: -10px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+}
+
+.logo {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 36px;
+}
+
+.user-cabinet {
+    background-image: url("../../images/user.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 30px;
+    height: 25px;
+
+    &__outter {
+        width: 50px;
+        height: 50px;
+        border: 1px solid #9A9A9A;
+        box-sizing: border-box;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    }
+}
+
+.nav-line {
+    z-index: 9999;
+    .buttons {
+        &__color {
+            background-color: var(--button-color);
+            color: white;
+            max-width: 362px;
+            height: 50px;
+            border-radius: 10px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &__color-outline {
+            border: 1px solid var(--button-color);
+            color: var(--button-color);
+            box-sizing: border-box;
+            border-radius: 10px;
+            height: 50px;
+            max-width: 187px;
+        }
+    }
+
+    .select-lang {
+        border: 1px solid #9A9A9A;
+        max-width: 112px;
+        height: 50px;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+
+    select {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 24px;
+    }
+
+    .user-cabinet {
+        background-image: url("../../images/user.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 30px;
+        height: 25px;
+
+        &__outter {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #9A9A9A;
+            box-sizing: border-box;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+        }
+    }
+}
+
+
+.menu,
+.closebtn {
+    display: none;
+}
+
+@include res_767 {
+    header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-link {
+        max-width: 362px !important;
+    }
+
+    // .menu-mobile:nth-child(1) {
+
+    //     .nav-moble {
+    //         a  {
+    //             width: 100% !important;
+    //         }
+    //     }
+    // }
+
+    .menu-mobile {
+        width: 90%;
+        display: flex;
+        margin: 0 auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        
+        .nav-link {
+            width: 100% !important;
+        }
+    }
+    
+    .menu-mobile > a { 
+        margin-right: 5px;
+        font-size: 15px;
+    }
+
+    .menu-mobile > a,
+    .menu-mobile > select {
+        margin-top: 10px;
+    }
+    
+    .menu-mobile:nth-child(2) {
+        width: 50%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .menu-mobile:nth-child(2) > a {
+        margin-right: 5px;
+    }
+    
+    .closebtn {
+        i {
+            font-size: 30px;
+            color: var(--main-color);
+        }
+    }
+
+    .menu {
+        display: block;
+        i {
+            font-size: 30px;
+            color: var(--main-color);
+        }
+    }
+
+    header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        align-content: center;
+
+
+        
+        .logo {
+            padding: 0;
+
+        }
+    }
+    
+    .sidenav {
+        .nav-moble {
+            display: block !important;
+            margin-top: 50px;
+        }
+    }
+
+    .nav {
+        display: none !important;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        li {
+            display: flex;
+            flex-direction: center;
+            margin-top: 10px;
+        }
+    }
+}
+
+nav {
+    background: #333;
+    border-bottom-right-radius: 5px;
+    left: 0;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+}
+
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 9999; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background: var(--background-color-white);
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  
+  /* The navigation menu links */
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #000000;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
