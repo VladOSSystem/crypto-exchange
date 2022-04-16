@@ -1,0 +1,104 @@
+.auth {
+    &-login {
+        position: relative !important;
+        background-color: white;
+        padding-top: 20px !important;
+        padding: 60px;
+        padding-bottom: 20px;
+        background: #FFFFFF;
+        box-shadow: 0px 20px 30px #E5E6F2;
+        border-radius: 10px;
+        margin-top: 100px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        input {
+            background: #FAFBFF;
+            text-decoration: none;
+            border: none;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+        }
+        input:focus {
+            outline: none;
+        }
+        .password-wrapper {
+            width: 100%;
+        }
+        #passwordIcon {
+            position: absolute;
+            top: 218px;
+            right: 90px;
+            z-index: 9;
+            cursor: pointer;
+        }
+    }
+    &-left-inner {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        margin-top: 10px;
+        a {
+            text-decoration: none;
+            color: #0034A5;
+        }
+    }
+}
+
+.login-button {
+    width: 100%;
+    text-decoration: none;
+    margin-top: 15px;
+    outline: none;
+}
+
+.login-button:hover {
+    color: #fff;
+}
+
+.link-color {
+    text-decoration: none;
+    color: #0034A5;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 28px;
+}
+
+.under-log {
+    margin-top: 10px;
+}
+
+.under-condition {
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 26px;
+    width: 80%;
+    text-align: center;
+    color: #929292;
+    .under-link {
+        text-decoration: none;
+        color: #0034A5;
+    }
+}
+
+.success-registration {
+    width: 90%;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 144%;
+    text-align: center;
+    color: #313131;
+}
+
+.showToggle {
+    display: none;
+}

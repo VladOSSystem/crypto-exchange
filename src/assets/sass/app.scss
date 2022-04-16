@@ -1,14 +1,13 @@
 // Normalise
 @import "./vendor/normalise";
-
 // Base
 @import "./base/mixin.scss";
 @import "./base/variables";
 @import "./base/base";
 @import "./base/typography";
-
 // Components
 @import "./components/index.scss";
 @import "./components/nav";
 @import "./components/footer.scss";
 @import "./components/main-content";
+@import "./components/auth.scss";

@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block content %}
+<div class="container terms">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6 col-sm-9 col-lg-9 col-xl-6">
+            <div class="auth-login">
+                <h2>Войти в кабинет</h2>
+                <input placeholder="Введите E-mail" />
+                <input placeholder="Введите пароль" type="password" id="password" />
+                <div class="show" onclick="showPassword()">
+                    <i class="fa-solid fa-lock" id="passwordIcon"></i>
+                </div>
+                <div class="auth-left-inner">
+                    <a href="/reset-password">Забыли пароль?</a>
+                </div>
+                <a href="#" class="login-button buttons__color">Войти</a>
+                <p class="under-log">Нет учетной записи? <a href="/register" class="link-color">Регистрация</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
