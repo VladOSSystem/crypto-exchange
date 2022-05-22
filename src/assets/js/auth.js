@@ -11,7 +11,6 @@ let passwordIconSet = document.querySelector('#passwordIconSet');
 let passwordSetRepeat = document.querySelector('#setPasswordRepeat');
 let passwordIconSetRepeat = document.querySelector('#passwordIconSetRepeat');
 
-
 const showPassword = (arg) => {
     if (passwordInput) {
         if (passwordInput.type === 'password') {

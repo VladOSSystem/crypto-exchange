@@ -10,17 +10,6 @@ const browserSync = require("browser-sync").create(); //https://browsersync.io/d
 const nunjucksRender = require("gulp-nunjucks-render");
 const autoprefixer = require('gulp-autoprefixer');
 const babel = require('gulp-babel');
-const env = require('gulp-env');
-env(".env.json");
-
-// /*
-// TOP LEVEL FUNCTIONS
-//     gulp.task = Define tasks
-//     gulp.src = Point to files to use
-//     gulp.dest = Points to the folder to output
-//     gulp.watch = Watch files and folders for changes
-// */
-
 // Optimise Images
 function imageMin(cb) {
     gulp.src("src/assets/images/*")
@@ -50,14 +39,11 @@ function minifyHTML(cb) {
 
 // Scripts
 function js(cb) {
-    const envs = env.set({
-        NODE_ENV: 'debug'
-    });
-    gulp.src("src/assets/js/*js")
-        .pipe(envs)
+    gulp.src(["config/config.js", "src/assets/js/*js"])
         .pipe(babel({
-            presets: ['@babel/preset-env']
-        }))
+            "presets": [["@babel/preset-env", { "modules": "commonjs" }]],
+            "plugins": ["@babel/plugin-transform-modules-commonjs"]
+          }))
         .pipe(concat("main.js"))
         .pipe(uglify())
         .pipe(gulp.dest("dist/js"));

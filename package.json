@@ -4,7 +4,9 @@
     "description": "A basic Gulp boilerplate to get developing locally. Comes with Sass/JS/image minification and hot reload.",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "gulp dev",
+        "build": "gulp build"
     },
     "author": "Kieran Brown",
     "license": "ISC",
@@ -12,8 +14,10 @@
         "gulp-env": "^0.4.0"
     },
     "devDependencies": {
-        "@babel/core": "^7.11.0",
-        "@babel/preset-env": "^7.11.0",
+        "@babel/core": "^7.18.0",
+        "@babel/plugin-transform-modules-commonjs": "^7.18.0",
+        "@babel/preset-env": "^7.18.0",
+        "@babel/register": "^7.17.7",
         "browser-sync": "^2.26.14",
         "gulp": "^4.0.2",
         "gulp-autoprefixer": "^6.1.0",

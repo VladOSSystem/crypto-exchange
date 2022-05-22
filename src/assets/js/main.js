@@ -3,6 +3,7 @@ const menuContainer = document.querySelector('.menu-items');
 const liNav = document.getElementsByTagName("li");
 const innWidt = window.innerWidth;
 let generateMenu = '';
+const BASE_URL = CONFIG().BASE_URL;
 
 $(document).ready(function() {
     $("tr:even").css("background-color", "#FFF");
@@ -158,7 +159,7 @@ function closeNav() {
     });
 })(jQuery);
 const banks = () => {
-    return axios.get('http://macro.local:8000/landing/banks')
+    return axios.get(`${BASE_URL}/landing/banks`)
     .then(response => {
         const banks = document.querySelector('#banks_selector');
         const banks2 = document.querySelector('#banks_selector_take');
@@ -177,7 +178,7 @@ const banks = () => {
     .catch(error => console.log(error))
 }
 const cities = () => {
-    return axios.get('http://macro.local:8000/landing/cities')
+    return axios.get(`${BASE_URL}/landing/cities`)
     .then(response => {
         const cities = document.querySelector('#cities_selector');
         const cities2 = document.querySelector('#cities_selector_take');
@@ -196,7 +197,7 @@ const cities = () => {
     .catch(error => console.log(error))
 }
 const cryptocurency = () => {
-    return fetch('http://macro.local:8000/landing/currencies')
+    return fetch(`${BASE_URL}/landing/currencies`)
     .then(response => response.json())
     .then(data => {
         const select = document.querySelector('#give_selector');
@@ -220,6 +221,7 @@ const cryptocurency = () => {
 
 ( () => {
     if (window.location.pathname == '/') {
+
     const giveSelect = document.getElementById('give_selector');
     const takeSelect = document.getElementById('take_selector');
     document.getElementById('giveInput').addEventListener('input', (e) => {
@@ -240,7 +242,7 @@ const cryptocurency = () => {
         const amount = Number(document.getElementById('giveInput').value);
         $('#calc-text').hide();
         $('#loading').attr('id', 'loading-pending');
-        axios.post("http://127.0.0.1:8000/landing/calculationOrder", {
+        axios.post(`${BASE_URL}/landing/calculationOrder`, {
             calculation : {
                 currency_from_id,
                 currency_to_id,
@@ -440,7 +442,7 @@ const cryptocurency = () => {
             }
         }
         axios({
-            url: `http://macro.local:8000/landing/createOrder`,
+            url: `${BASE_URL}/landing/createOrder`,
             method: 'post',
             withCredentials: true,
             headers: {
@@ -502,7 +504,7 @@ if (window.location.pathname == '/cabinet') {
 
     const getTransactions = () => {
     axios({
-        url: `http://macro.local:8000/cabinet/orders`,
+        url: `${BASE_URL}/cabinet/orders`,
         method: 'GET',
         withCredentials: true,
         headers: {
@@ -568,7 +570,7 @@ if (window.location.pathname == '/cabinet') {
 
     document.querySelector('#logout').addEventListener('click', () => {
         axios({
-            url: `http://macro.local:8000/logout`,
+            url: `${BASE_URL}/logout`,
             method: 'POST',
             withCredentials: true,
             headers: {
@@ -588,7 +590,7 @@ if (window.location.pathname == '/cabinet') {
         let new_password = document.querySelector('#passwordChangeFirst').value;
         let new_password_confirmation = document.querySelector('#passwordChange').value
         axios({
-            url: `http://macro.local:8000/cabinet/changePassword`,
+            url: `${BASE_URL}/cabinet/changePassword`,
             method: 'POST',
             withCredentials: true,
             headers: {
@@ -635,7 +637,7 @@ if (window.location.pathname == '/register') {
         let password_confirmation = $("input[name*='setPasswordRepeat']").val();
         $.ajax({
             type: 'POST',
-            url: 'http://macro.local:8000/register',
+            url: `${BASE_URL}/register`,
             dataType: 'json',
             data: {
                 first_name,
@@ -676,7 +678,7 @@ if (window.location.pathname == '/register') {
 //login
 if (window.location.pathname == '/login') {
     axios({
-        url: `http://macro.local:8000/cabinet/orders`,
+        url: `${BASE_URL}/cabinet/orders`,
         method: 'GET',
         withCredentials: true,
         headers: {
@@ -692,7 +694,7 @@ if (window.location.pathname == '/login') {
         let password = $("input[name*='login_password']").val();
         $.ajax({
             type: 'POST',
-            url: 'http://macro.local:8000/login',
+            url: `${BASE_URL}/login`,
             dataType: 'json',
             data: {
                 email,
