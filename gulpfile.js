@@ -10,6 +10,8 @@ const browserSync = require("browser-sync").create(); //https://browsersync.io/d
 const nunjucksRender = require("gulp-nunjucks-render");
 const autoprefixer = require('gulp-autoprefixer');
 const babel = require('gulp-babel');
+const env = require('gulp-env');
+env(".env.json");
 
 // /*
 // TOP LEVEL FUNCTIONS
@@ -48,7 +50,11 @@ function minifyHTML(cb) {
 
 // Scripts
 function js(cb) {
+    const envs = env.set({
+        NODE_ENV: 'debug'
+    });
     gulp.src("src/assets/js/*js")
+        .pipe(envs)
         .pipe(babel({
             presets: ['@babel/preset-env']
         }))

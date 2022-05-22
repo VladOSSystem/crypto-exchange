@@ -37,12 +37,33 @@
         }
         #passwordIconChange {
             position: absolute;
-            top: 218px;
+            top: 300px;
+            right: 90px;
+            z-index: 9;
+            cursor: pointer;
+        }
+        #passwordIconSet {
+            position: absolute;
+            top: 550px;
+            right: 90px;
+            z-index: 9;
+            cursor: pointer;
+        }
+        #passwordIconSetRepeat {
+            position: absolute;
+            top: 635px;
             right: 90px;
             z-index: 9;
             cursor: pointer;
         }
         #passwordIconChangeFirst {
+            position: absolute;
+            top: 218px;
+            right: 90px;
+            z-index: 9;
+            cursor: pointer;
+        }
+        #passwordIconChangeLast {
             position: absolute;
             top: 135px;
             right: 90px;

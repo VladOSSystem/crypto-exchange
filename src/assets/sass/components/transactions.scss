@@ -18,6 +18,10 @@
         background: #FFA65E;
         color: #B86927;
     }
+    &_warning {
+        background: #FFA65E;
+        color: #B86927;
+    }
     &_cancel {
         background: #FC5C5C;
         color: #820000;
@@ -25,5 +29,9 @@
     &_success {
         background: #5FDD97;
         color: #1F9050;
+    }
+    &_primary {
+        background: #5f7add;
+        color: rgb(31, 59, 144);
     }
 }

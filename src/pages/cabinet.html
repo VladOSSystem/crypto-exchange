@@ -17,7 +17,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <!-- <tr>
                             <th scope="row">205
                             </th>
                             <td>2022/02/11 10:49</td>
@@ -56,22 +56,27 @@
                             <td>0.01395 ETH</td>
                             <td>13.93714 ETH</td>
                             <td> <span searchvalue="5" class="table-status table-status_success">Успешно</span></td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
             <div class="col-md-6 col-sm-9 col-lg-9 col-xl-6 signUp">
                 <div class="auth-login">
                     <h2>Изменить пароль</h2>
-                    <input placeholder="Введить пароль" type="password" id="passwordChangeFirst" />
+                    <input placeholder="Введить старый пароль" type="password" id="passwordChangeLast" />
+                    <div class="show" onclick="showPassword(3)">
+                        <i class="fa-solid fa-lock" id="passwordIconChangeLast"></i>
+                    </div>
+                    <input placeholder="Введить новый пароль" type="password" id="passwordChangeFirst" />
                     <div class="show" onclick="showPassword(1)">
                         <i class="fa-solid fa-lock" id="passwordIconChangeFirst"></i>
                     </div>
-                    <input placeholder="Повторите пароль" type="password" id="passwordChange" />
+                    <input placeholder="Повторите новый пароль" type="password" id="passwordChange" />
                     <div class="show" onclick="showPassword(2)">
                         <i class="fa-solid fa-lock" id="passwordIconChange"></i>
                     </div>
-                    <a href="#" class="login-button buttons__color" onclick="checkRegister()">Изменить</a>
+                    
+                    <a href="#" class="login-button buttons__color" onclick="changePassword()">Изменить</a>
                 </div>
             </div>
             <div class="col-md-6 col-sm-9 col-lg-9 col-xl-6 showToggle">
@@ -84,4 +89,25 @@
         </div>
     </div>
 </div>
+
+<div id="myModalCabinet" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="form_wrapper">
+          <div class="form_container">
+            <div class="title_container">
+              <h2>Детали Заявки</h2>
+            </div>
+            <div class="row clearfix">
+              <div class="order-detail">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  
+  </div>
 {% endblock %}
