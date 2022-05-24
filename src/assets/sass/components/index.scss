@@ -512,6 +512,9 @@ tbody tr {
         line-height: 28px;
         padding: 30px;
     }
+    .buttons__color:hover {
+        color: #000000 !important;
+    }
     .buttons__color:active,
     .buttons__color:focus {
         outline: 0;

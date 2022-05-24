@@ -234,7 +234,30 @@ const cryptocurency = () => {
         }
     });
     document.querySelector('.create-order').addEventListener('click', (e) => {
-        // console.log('chuj');
+        $("#memo").hide();
+        $("#card").hide();
+        document.querySelector('.order-flow').innerHTML = `
+        <strong>
+        ${giveSelect.options[giveSelect.selectedIndex].innerText} <img width='30px' src="https://img.icons8.com/material-rounded/96/000000/move-right.png"/>
+        ${takeSelect.options[takeSelect.selectedIndex].innerText}
+        </strong>`
+        console.log($('#take-fiat-bank').is(':checked'))
+        if ($('#take-fiat-bank').is(':checked')) {
+            $("#card").show();
+            $("#cash").hide();
+        }
+        if (
+            (
+                giveSelect.options[giveSelect.selectedIndex].innerText === 'XRP' || 
+                takeSelect.options[takeSelect.selectedIndex].innerText === 'XRP'
+                ) || (
+                giveSelect.options[giveSelect.selectedIndex].innerText === 'XMR' || 
+                takeSelect.options[takeSelect.selectedIndex].innerText === 'XMR'
+                )
+            ) {
+                $("#memo").show();
+
+            }
     });
     document.getElementById('calculate').addEventListener('click',(e) => {
         const currency_from_id = Number(giveSelect.options[giveSelect.selectedIndex].value);
@@ -370,12 +393,13 @@ const cryptocurency = () => {
         $('#calculate').show();
         $('#calc-text').show();
         const checkedButtons = $('input:checked')[1].value;
+        const ifTake = $('input:checked')[2].value;
         var inputText = event.target.value - 1;
         if (checkedButtons != 'cash_take') {
-            takeSelect.innerHTML = "";
+            if (ifTake !== 'cash_take') takeSelect.innerHTML = "";
             dataCrypto.then(rows => {
                 rows[inputText].currencies.map(v => {
-                    if (v.name != 'USD') {
+                    if (ifTake !== 'cash_take') {
                         let option2 = document.createElement("option");
                         option2.value = v.id;
                         option2.text = v.name;
@@ -414,6 +438,7 @@ const cryptocurency = () => {
         let phone = $("input[name='phone']").val()
         let email = $("input[name='email']").val()
         let hash = $("input[name='hash']").val()
+        let card = $("input[name='card']").val()
         let memo = $("input[name='memo']").val()
         const bankCity = document.querySelector('#banks_selector');
         const city = document.querySelector('#cities_selector');
@@ -422,6 +447,7 @@ const cryptocurency = () => {
         const currency_from_id = Number(giveSelect.options[giveSelect.selectedIndex].value);
         const currency_to_id = Number(takeSelect.options[takeSelect.selectedIndex].value);
         const amount = Number(document.getElementById('giveInput').value);
+
    
         const order = {};
         if ($('#give-fiat').is(':checked')) {
@@ -470,7 +496,7 @@ const cryptocurency = () => {
                     amount
                 },
                 address: {
-                    hash,
+                    hash: hash ? hash : card,
                     memo,
                     txid: "6900e17d7386d5aff3741539059ea910c729634864268d9b3ba325c663a711fd"
                 }
@@ -478,6 +504,7 @@ const cryptocurency = () => {
           })
        .then(response => {
          $.notify(`Success: code 200`, 'success');
+         localStorage.setItem('user', JSON.stringify(response.data));
 
            setTimeout(() => {
             window.location.pathname = '/cabinet'
@@ -500,8 +527,11 @@ if (window.location.pathname == '/cabinet') {
 
     let modal = document.getElementById("myModalCabinet");
     let span = document.getElementsByClassName("close")[0];
-    let orderDetail = $('.order-detail')
-
+    let orderDetail = $('.order-detail');
+    const user = JSON.parse(localStorage.getItem('user'));
+    const {first_name, last_name} = user.order.client;
+    const userInfo = document.getElementById('user_info');
+    userInfo.innerHTML = `${first_name} ${last_name}`
     const getTransactions = () => {
     axios({
         url: `${BASE_URL}/cabinet/orders`,
@@ -524,7 +554,6 @@ if (window.location.pathname == '/cabinet') {
             <td>${v.created_at}</td>
             <td>${v.amount}</td>
             <td>${v.rate}</td>
-            <td>${v.main_commission}</td>
             <td>${v.sum}</td>
             <td> <span searchvalue="5" class="table-status table-status_${v.status.color}">${v.status.description}</span></td>
            </tr>
@@ -541,13 +570,16 @@ if (window.location.pathname == '/cabinet') {
             let pushObj = '';
             orderDetail.empty();
             for (let k in result[0].deposit_address) {
-                pushObj = `
+                console.log(k, result[0].deposit_address[k])
+                if (result[0].deposit_address[k]) {
+                    pushObj = `
                     <h2>${k}: ${result[0].deposit_address[k]}</h2>
-                `
-                orderDetail.append(pushObj)
+                    `
+                    orderDetail.append(pushObj)
+                }
 
             }
-            console.log(result[0].deposit_address)
+            // console.log(result[0].deposit_address)
           
             modal.style.display = "block";
             span.onclick = function() {
@@ -663,7 +695,6 @@ if (window.location.pathname == '/register') {
                 }
             },
             error: (error) => {
-                console.log(error.responseJSON)
                 Object.entries(error.responseJSON.errors).map(v => {
                     v[1].map(j => {
                         $.notify(`${j} code 422`, 'error');
