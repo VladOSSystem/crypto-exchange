@@ -12,8 +12,6 @@ if (innWidt <= 767) {
     generateMenu = `
         <div class="menu-mobile menu-mobile-column">
         ${liNav[0].innerHTML}
-        ${liNav[3].innerHTML}
-        ${liNav[4].innerHTML}
 
         </div>
         <div class="menu-mobile">
@@ -36,13 +34,11 @@ $(window).resize(function() {
     if (window.innerWidth <= 767) {
         generateMenu = `
             <div class="menu-mobile menu-mobile-column">
-                ${liNav[0].innerHTML}
-                ${liNav[3].innerHTML}
                 ${liNav[4].innerHTML}
             </div>
             <div class="menu-mobile">
-                ${liNav[2].innerHTML}
-                ${liNav[1].innerHTML}
+            ${liNav[2].innerHTML}
+            ${liNav[1].innerHTML}
             </div>  
         `;
         menuContainer.innerHTML = generateMenu
