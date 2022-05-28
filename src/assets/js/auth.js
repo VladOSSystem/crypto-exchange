@@ -44,7 +44,6 @@ const showPassword = (arg) => {
         }
     }
     if ((passwordChangeFirst && arg === 1) || passwordSet && arg === 1) {
-        console.log(passwordChangeFirst)
         if (passwordChangeFirst) {
             if (passwordChangeFirst?.type === 'password') {
                 passwordChangeFirst.type = 'text';

@@ -192,6 +192,22 @@ const cities = () => {
     })
     .catch(error => console.log(error))
 }
+const filterIcons = (currName) => {
+    const objRun = {
+        1: `<img class="img-coins" src="https://img.icons8.com/pastel-glyph/64/000000/tether--v1.png"/>`,
+        2: `<img class="img-coins" src="https://img.icons8.com/pastel-glyph/64/000000/tron.png"/>`,
+        3: `<img class="img-coins" src="https://img.icons8.com/pastel-glyph/64/000000/tether--v1.png"/>`,
+        4: `<img class="img-coins" src="https://img.icons8.com/external-black-fill-lafs/64/000000/external-USDC-cryptocurrency-black-fill-lafs.png"/>`,
+        5: `<img class="img-coins" src="https://img.icons8.com/pastel-glyph/64/000000/bitcoin--v1.png"/>`,
+        6: `<img class="img-coins" src="https://img.icons8.com/external-black-fill-lafs/64/000000/external-Bitcoin-Cash-cryptocurrency-black-fill-lafs.png"/>`,
+        7: `<img class="img-coins" src="https://img.icons8.com/ios/50/000000/ethereum.png"/>`,
+        8: `<img class="img-coins" src="https://img.icons8.com/external-modern-lines-kalash/64/000000/external-cryptocurrency-currency-and-cryptocurrency-signs-modern-lines-kalash-2.png"/>`,
+        9: `<img class="img-coins" src="https://img.icons8.com/ios/50/000000/monero.png"/>`,
+        10: `<img class="img-coins" src="https://img.icons8.com/pastel-glyph/64/000000/ripple.png"/>`,
+        11: `<img src="https://img.icons8.com/material-outlined/24/000000/us-dollar--v1.png"/>`,
+    }
+    return objRun[currName.id]
+}
 const cryptocurency = () => {
     return fetch(`${BASE_URL}/landing/currencies`)
     .then(response => response.json())
@@ -203,10 +219,12 @@ const cryptocurency = () => {
             if (v.name != 'USD') {
                 let option1 = document.createElement("option");
                 option1.value = v.id;
-                option1.text = v.name;
+                option1.text = `${v.name}`;
+                option1.setAttribute('data-icon',filterIcons(v))
                 let option2 = document.createElement("option");
                 option2.value = v.id;
                 option2.text = v.name;
+                option2.setAttribute('data-icon',filterIcons(v))
                 select.appendChild(option1);
                 select2.appendChild(option2);
             }
@@ -217,6 +235,58 @@ const cryptocurency = () => {
 
 ( () => {
     if (window.location.pathname == '/') {
+        function formatText (icon) {
+            return $('<span>' + $(icon.element).data('icon') + icon.text + '</span>');
+        };
+
+        $("#take_selector").select2({
+            placeholder: "Select a programming language",
+            allowClear: true,
+            width: "50%",
+            templateSelection: formatText,
+            templateResult: formatText
+        });
+        $("#give_selector").select2({
+            placeholder: "Select a programming language",
+            allowClear: true,
+            width: "50%",
+            templateSelection: formatText,
+            templateResult: formatText
+        });
+        $("#cities_selector").select2({
+            placeholder: "Select a programming language",
+            allowClear: true,
+            width: "100%",
+        });
+        $("#banks_selector").select2({
+            placeholder: "Select a programming language",
+            allowClear: true,
+            width: "100%",
+        });
+        $("#cities_selector_take").select2({
+            placeholder: "Select a programming language",
+            allowClear: true,
+            width: "100%",
+        });
+        $("#banks_selector_take").select2({
+            placeholder: "Select a programming language",
+            allowClear: true,
+            width: "100%",
+        });
+        $("#multiple").select2({
+            placeholder: "Select a programming language",
+            allowClear: true
+        });
+
+    $(".default_option").click(function(){
+        $(this).parent().toggleClass("active");
+        })
+        
+        $(".select_ul li").click(function(){
+        var currentele = $(this).html();
+        $(".default_option li").html(currentele);
+        $(this).parents(".select_wrap").removeClass("active");
+        })
 
     const giveSelect = document.getElementById('give_selector');
     const takeSelect = document.getElementById('take_selector');
@@ -237,7 +307,6 @@ const cryptocurency = () => {
         ${giveSelect.options[giveSelect.selectedIndex].innerText} <img width='30px' src="https://img.icons8.com/material-rounded/96/000000/move-right.png"/>
         ${takeSelect.options[takeSelect.selectedIndex].innerText}
         </strong>`
-        console.log($('#take-fiat-bank').is(':checked'))
         if ($('#take-fiat-bank').is(':checked')) {
             $("#card").show();
             $("#cash").hide();
@@ -293,6 +362,7 @@ const cryptocurency = () => {
         $('#calculate').show();
         $('#calc-text').show();
         if (e.target.value == 'cash_give') {
+            $($('.select2-container--default')[2]).hide()
             $('.choose-cash-point').show();
             $('.choose-cash-point-take').hide();
             document.querySelectorAll('input[value="crypto_take"]')[0].checked = true;
@@ -302,15 +372,18 @@ const cryptocurency = () => {
                 let option = document.createElement("option");
                 option.value = rows[10].id;
                 option.text = rows[10].name;
+                option.setAttribute('data-icon',filterIcons(rows[10]))
                 giveSelect.appendChild(option);
                 rows[10].currencies.map(v => {
                     let option2 = document.createElement("option");
                     option2.value = v.id;
                     option2.text = v.name;
+                    option2.setAttribute('data-icon',filterIcons(v))
                     takeSelect.appendChild(option2);
                 })
             })
         } else if (e.target.value == 'cash_take') {
+            $($('.select2-container--default')[5]).hide()
             $('.choose-cash-point').hide();
             $('.choose-cash-point-take').show();
             document.querySelectorAll('input[value="crypto_give"]')[0].checked = true
@@ -320,11 +393,13 @@ const cryptocurency = () => {
                 let option = document.createElement("option");
                 option.value = rows[10].id;
                 option.text = rows[10].name;
+                option.setAttribute('data-icon',filterIcons(rows[10]))
                 takeSelect.appendChild(option);
                 rows[10].currencies.map(v => {
                     let option2 = document.createElement("option");
                     option2.value = v.id;
                     option2.text = v.name;
+                    option2.setAttribute('data-icon',filterIcons(v))
                     giveSelect.appendChild(option2);
                 })
             })
@@ -339,9 +414,11 @@ const cryptocurency = () => {
                         let option1 = document.createElement("option");
                         option1.value = v.id;
                         option1.text = v.name;
+                        option1.setAttribute('data-icon',filterIcons(v))
                         let option2 = document.createElement("option");
                         option2.value = v.id;
                         option2.text = v.name;
+                        option2.setAttribute('data-icon',filterIcons(v))
                         giveSelect.appendChild(option1);
                         takeSelect.appendChild(option2);
                     }
@@ -358,9 +435,11 @@ const cryptocurency = () => {
                         let option1 = document.createElement("option");
                         option1.value = v.id;
                         option1.text = v.name;
+                        option1.setAttribute('data-icon',filterIcons(v))
                         let option2 = document.createElement("option");
                         option2.value = v.id;
                         option2.text = v.name;
+                        option2.setAttribute('data-icon',filterIcons(v))
                         giveSelect.appendChild(option1);
                         takeSelect.appendChild(option2);
                     }
@@ -369,15 +448,24 @@ const cryptocurency = () => {
         } else if (e.target.value == 'fiat_give') {
             $('#banks_selector').hide();
             $('#cities_selector').show();
+            $($('.select2-container--default')[2]).hide()
+            $($('.select2-container--default')[1]).show()
         } else if (e.target.value == 'bank_give') {
             $('#banks_selector').show();
             $('#cities_selector').hide();
+            $($('.select2-container--default')[2]).show()
+            $($('.select2-container--default')[1]).hide()
+
         } else if (e.target.value == 'fiat_take') {
             $('#banks_selector_take').hide();
             $('#cities_selector_take').show();
+            $($('.select2-container--default')[5]).hide()
+            $($('.select2-container--default')[4]).show()
         } else if (e.target.value == 'bank_take') {
             $('#banks_selector_take').show();
             $('#cities_selector_take').hide();
+            $($('.select2-container--default')[5]).show()
+            $($('.select2-container--default')[4]).hide()
         }
     });
     const dataCrypto = cryptocurency();
@@ -395,10 +483,11 @@ const cryptocurency = () => {
             if (ifTake !== 'cash_take') takeSelect.innerHTML = "";
             dataCrypto.then(rows => {
                 rows[inputText].currencies.map(v => {
-                    if (ifTake !== 'cash_take') {
+                    if (ifTake !== 'cash_take' && v.name !== 'USD') {
                         let option2 = document.createElement("option");
                         option2.value = v.id;
                         option2.text = v.name;
+                        option2.setAttribute('data-icon',filterIcons(v))
                         takeSelect.appendChild(option2);
                     }
                 })
@@ -566,7 +655,6 @@ if (window.location.pathname == '/cabinet') {
             let pushObj = '';
             orderDetail.empty();
             for (let k in result[0].deposit_address) {
-                console.log(k, result[0].deposit_address[k])
                 if (result[0].deposit_address[k]) {
                     pushObj = `
                     <h2>${k}: ${result[0].deposit_address[k]}</h2>
@@ -575,7 +663,6 @@ if (window.location.pathname == '/cabinet') {
                 }
 
             }
-            // console.log(result[0].deposit_address)
           
             modal.style.display = "block";
             span.onclick = function() {
