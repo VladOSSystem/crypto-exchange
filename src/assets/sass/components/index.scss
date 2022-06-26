@@ -1001,12 +1001,16 @@ tbody tr {
         background-color: #2E47E3;
         border-color: #2E47E3;
     }
+    .buy-value-input {
+        width: 100%;
+        font-size: 20px;
+    }
     .crypto-input {
         background-color: rgba(0, 0, 0, 0) !important;
         border: 1px solid #C8C8C8;
         box-sizing: border-box;
         border-radius: 10px;
-        width: 58%;
+        width: 90%;
         margin-right: 12px;
         height: 50px;
     }
@@ -1017,6 +1021,7 @@ tbody tr {
         display: flex;
 
         .custom-select {
+            margin-top: 100px !important;
             width: 42% !important;
         }
     }
@@ -1269,7 +1274,7 @@ tbody tr {
             border: 1px solid #C8C8C8;
             box-sizing: border-box;
             border-radius: 10px;
-            width: 58%;
+            width: 90%;
             margin-right: 12px;
             height: 50px;
         }
@@ -1437,4 +1442,8 @@ tbody > tr {
   
   .select2-container .select2-dropdown .select2-results ul .select2-results__option--highlighted[aria-selected] {
     background-color: #2e47e3;
+  }
+
+  .buttons__color:hover {
+    color: #5493f2 !important;
   }

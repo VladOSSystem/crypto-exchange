@@ -5,65 +5,7 @@ const innWidt = window.innerWidth;
 let generateMenu = '';
 const BASE_URL = CONFIG().BASE_URL;
 
-$(document).ready(function() {
-    $("tr:even").css("background-color", "#FFF");
-});
-if (innWidt <= 767) {
-    generateMenu = `
-        <div class="menu-mobile menu-mobile-column">
-        ${liNav[0].innerHTML}
 
-        </div>
-        <div class="menu-mobile">
-            ${liNav[2].innerHTML}
-            ${liNav[1].innerHTML}
-        </div>  
-    `;
-    menuContainer.innerHTML = generateMenu
-}
-
-$(window).resize(function() {
-    if (window.innerWidth >= 767) {
-        document.querySelector(".menu").style.display = "none";
-        document.getElementById("mySidenav").style.width = "0";
-        document.querySelector(".closebtn").style.display = "none";
-    } else {
-        document.querySelector(".menu").style.display = "block";
-    }
-
-    if (window.innerWidth <= 767) {
-        generateMenu = `
-            <div class="menu-mobile menu-mobile-column">
-                ${liNav[4].innerHTML}
-            </div>
-            <div class="menu-mobile">
-            ${liNav[2].innerHTML}
-            ${liNav[1].innerHTML}
-            </div>  
-        `;
-        menuContainer.innerHTML = generateMenu
-
-    } else {
-        generateMenu = `
-            <li class=""><a href="#" class="nav-link px-2 buttons__color">Проверить статус операции</a></li>
-            <li>
-            <select class="form-select select-lang bg-transparent shadow-none" aria-label="Default select example">
-                <option selected>RU</option>
-                <option value="1">EN</option>
-                <option value="2">UA</option>
-                <option value="3">RU</option>
-            </select>
-            </li>
-            <li>
-            <a href="#" class="nav-link px-2 link-dark user-cabinet__outter">
-                <div class="user-cabinet"></div>
-            </a>
-            </li>
-            <li><a href="#" class="nav-link px-2 buttons__color-outline diplay-center-flex">Обмен валют</a></li>
-        `;
-        menuContainer.innerHTML = generateMenu
-    }
-});
 
 
 function openNav() {
@@ -235,6 +177,7 @@ const cryptocurency = () => {
 
 ( () => {
     if (window.location.pathname == '/') {
+        $('.buy-value-input').hide();
         function formatText (icon) {
             return $('<span>' + $(icon.element).data('icon') + icon.text + '</span>');
         };
@@ -302,14 +245,20 @@ const cryptocurency = () => {
     document.querySelector('.create-order').addEventListener('click', (e) => {
         $("#memo").hide();
         $("#card").hide();
+        const fromCurr = $('#giveInput').val();
+        const toCurr = $('#takeInput').val();
+
         document.querySelector('.order-flow').innerHTML = `
         <strong>
-        ${giveSelect.options[giveSelect.selectedIndex].innerText} <img width='30px' src="https://img.icons8.com/material-rounded/96/000000/move-right.png"/>
-        ${takeSelect.options[takeSelect.selectedIndex].innerText}
+        ${giveSelect.options[giveSelect.selectedIndex].innerText} ${fromCurr}<img width='30px' src="https://img.icons8.com/material-rounded/96/000000/move-right.png"/>
+        ${takeSelect.options[takeSelect.selectedIndex].innerText} ${toCurr}
         </strong>`
         if ($('#take-fiat-bank').is(':checked')) {
             $("#card").show();
             $("#cash").hide();
+        }
+        if ($('#give-fiat-bank').is(':checked')) {
+            $("#card").show();
         }
         if (
             (
@@ -348,6 +297,14 @@ const cryptocurency = () => {
             $('.main_crypto').text(takeSelect.options[takeSelect.selectedIndex].innerText);
             $('#takeInput').val(result.sum)
         }).catch(e => {
+            if (e.response.data.errors) {
+                $('.buy-value-input').fadeIn();
+                $('#give-input-error').text(e.response.data.errors.amount[0]);
+                setTimeout(() => {
+                    $('.buy-value-input').fadeOut();
+                }, 5000)
+            }
+
             $.notify(e.message, 'error');
             setTimeout(() => {
                 $('#calc-text').show();
@@ -451,6 +408,7 @@ const cryptocurency = () => {
             $($('.select2-container--default')[2]).hide()
             $($('.select2-container--default')[1]).show()
         } else if (e.target.value == 'bank_give') {
+            console.log('here')
             $('#banks_selector').show();
             $('#cities_selector').hide();
             $($('.select2-container--default')[2]).show()
@@ -552,6 +510,7 @@ const cryptocurency = () => {
                order.bank_id = Number(bankCityTake.options[bankCityTake.selectedIndex].value);
             }
         }
+        console.log(card, card.length > 0 ? card : null)
         axios({
             url: `${BASE_URL}/landing/createOrder`,
             method: 'post',
@@ -572,8 +531,9 @@ const cryptocurency = () => {
                     password_confirmation: "password"
                 },
                 order: order.length > 0 ? order : {
-                    city_id: null,
-                    bank_id: null
+                    city_id: order.city_id,
+                    bank_id: order.bank_id,
+                    card_number: card.length > 0 ? card : null
                 },
                 calculation: {
                     currency_from_id,
@@ -607,8 +567,10 @@ const cryptocurency = () => {
 
 
 })()
-
+$('#logout').hide();
 if (window.location.pathname == '/cabinet') {
+    $('#logout').show();
+    $('#check-status').hide();
 
     let modal = document.getElementById("myModalCabinet");
     let span = document.getElementsByClassName("close")[0];
@@ -651,13 +613,13 @@ if (window.location.pathname == '/cabinet') {
             // Here, `this` refers to the element the event was hooked on
             let elementId = e.path[1].children[0].innerText;
             let result = r.data.data.filter(v => v.id == elementId);
-            const {hash, memo} = result[0].deposit_address;
+            const {hash, memo} = result[0].list_data;
             let pushObj = '';
             orderDetail.empty();
-            for (let k in result[0].deposit_address) {
-                if (result[0].deposit_address[k]) {
+            for (let k in result[0].list_data) {
+                if (result[0].list_data[k]) {
                     pushObj = `
-                    <h2>${k}: ${result[0].deposit_address[k]}</h2>
+                    <h2>${k}: ${result[0].list_data[k]}</h2>
                     `
                     orderDetail.append(pushObj)
                 }

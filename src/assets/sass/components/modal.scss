@@ -118,7 +118,7 @@ $grey:#cccccc;
 	}
 	input {
     border-radius: 5px;
-    &[type="text"], &[type="email"], &[type="password"] {
+    &[type="text"], &[type="number"], &[type="email"], &[type="password"] {
       width: 100%;
       padding: 8px 10px 9px 42px;
       height: 50px;
@@ -130,10 +130,10 @@ $grey:#cccccc;
       -ms-transition: all 0.30s ease-in-out;
       transition: all 0.30s ease-in-out;
     }
-    &[type="text"]:hover, &[type="email"]:hover, &[type="password"]:hover {
+    &[type="text"]:hover, &[type="number"]:hover, &[type="email"]:hover, &[type="password"]:hover {
       background: #fafafa;
     }
-    &[type="text"]:focus, &[type="email"]:focus, &[type="password"]:focus {
+    &[type="text"]:focus, &[type="number"]:focus, &[type="email"]:focus, &[type="password"]:focus {
       -webkit-box-shadow: 0 0 2px 1px rgba(0, 21, 255, 0.5);
       -moz-box-shadow: 0 0 2px 1px rgba(0, 21, 255, 0.5);
       box-shadow: 0 0 2px 1px rgba(0, 21, 255, 0.5);

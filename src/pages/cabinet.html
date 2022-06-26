@@ -2,17 +2,18 @@
 <div class="container terms">
     <div class="row">
         <div class="col-md-12">
-            <h2>Ваши транзакции, <span id="user_info"></span></h2>
+            <h2 data-i18n="cabinet.title">Ваши транзакции </h2>
+            <h3 id="user_info"></h3>
             <div class="table-responsive transactions">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">ID заявки</th>
-                            <th scope="col">Дата Обмена</th>
-                            <th scope="col">Отдали</th>
-                            <th scope="col">Курс</th>
-                            <th scope="col">Получили</th>
-                            <th scope="col">Статус</th>
+                            <th scope="col" data-i18n="cabinet.table.p1">ID заявки</th>
+                            <th scope="col" data-i18n="cabinet.table.p2">Дата Обмена</th>
+                            <th scope="col" data-i18n="cabinet.table.p3">Отдали</th>
+                            <th scope="col" data-i18n="cabinet.table.p4">Курс</th>
+                            <th scope="col" data-i18n="cabinet.table.p5">Получили</th>
+                            <th scope="col" data-i18n="cabinet.table.p6">Статус</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,21 +62,21 @@
             </div>
             <div class="col-md-6 col-sm-9 col-lg-9 col-xl-6 signUp">
                 <div class="auth-login">
-                    <h2>Изменить пароль</h2>
-                    <input placeholder="Введить старый пароль" type="password" id="passwordChangeLast" />
+                    <h2 data-i18n="cabinet.password.title">Изменить пароль</h2>
+                    <input placeholder="Введить старый пароль" data-i18n="[placeholder]cabinet.password.pass1" type="password" id="passwordChangeLast" />
                     <div class="show" onclick="showPassword(3)">
                         <i class="fa-solid fa-lock" id="passwordIconChangeLast"></i>
                     </div>
-                    <input placeholder="Введить новый пароль" type="password" id="passwordChangeFirst" />
+                    <input placeholder="Введить новый пароль" data-i18n="[placeholder]cabinet.password.pass2" type="password" id="passwordChangeFirst" />
                     <div class="show" onclick="showPassword(1)">
                         <i class="fa-solid fa-lock" id="passwordIconChangeFirst"></i>
                     </div>
-                    <input placeholder="Повторите новый пароль" type="password" id="passwordChange" />
+                    <input placeholder="Повторите новый пароль" data-i18n="[placeholder]cabinet.password.pass3" type="password" id="passwordChange" />
                     <div class="show" onclick="showPassword(2)">
                         <i class="fa-solid fa-lock" id="passwordIconChange"></i>
                     </div>
                     
-                    <a href="#" class="login-button buttons__color" onclick="changePassword()">Изменить</a>
+                    <a href="#" class="login-button buttons__color" onclick="changePassword()" data-i18n="cabinet.password.btn">Изменить</a>
                 </div>
             </div>
             <div class="col-md-6 col-sm-9 col-lg-9 col-xl-6 showToggle">

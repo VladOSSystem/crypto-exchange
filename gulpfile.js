@@ -45,7 +45,7 @@ function js(cb) {
             "plugins": ["@babel/plugin-transform-modules-commonjs"]
           }))
         .pipe(concat("main.js"))
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(gulp.dest("dist/js"));
     cb();
 }

@@ -1,6 +1,6 @@
-<div id="mySidenav" class="sidenav">
+<!-- <div id="mySidenav" class="sidenav">
     <ul class="nav nav-moble col-xxl-5 col-xl-7 col-md-9 col-lg-7 col-12 mb-2 justify-content-md-between justify-content-center menu-items">
-        <li class=""><a href="./terms.html" class="nav-link px-2 buttons__color">Проверить статус операции</a></li>
+        <li class=""><a href="./terms.html" class="nav-link px-2 buttons__color" data-i18n="head.status">Проверить статус операции</a></li>
         <li>
             <div class="custom-select">
                 <select class=" " aria-label="Default select example">
@@ -25,19 +25,11 @@
 
         <a href="#" class="menu" onclick="openNav();"><i class="fas fa-bars"></i></a>
         <a href="#" class="closebtn" onclick="closeNav();" style="z-index: 9999;"><i class="fas fa-times"></i></a>
-
         <ul class="nav col-xxl-5 col-xl-5 col-md-6 col-lg-5 col-8 mb-2 justify-content-md-between justify-content-center menu-items">
-            <li class=""><a href="./terms.html" class="nav-link px-2 buttons__color">Проверить статус операции</a></li>
+            <li class=""><a href="./terms" class="nav-link px-2 buttons__color" data-i18n="head.status">Проверить статус операции</a></li>
             <li>
-                <!-- <div class="custom-select">
-
-                   
-                </div> -->
                 <div class="custom-select">
-                    <select class=" " aria-label="Default select example">
-                        <option selected>RU</option>
-                        <option value="1">EN</option>
-                        <option value="2">UA</option>
+                    <select name="language" id="languageSwitcher">
                     </select>
                 </div>
             </li>
@@ -46,7 +38,34 @@
                     <div class="user-cabinet"></div>
                 </a>
             </li>
-        </ul>
+        </ul> 
     </header>
     <hr class="main-hr">
-</div>
+</div> -->
+<header class="mainHeader">
+    <h1><a href="/"> <img src="./images/logo.png" width="150px"></a></h1>
+    <nav>
+        <ul class="MainNav">
+        <li class=""><a href="./terms" class="nav-link px-2 buttons__color check-status" data-i18n="head.status" id="check-status">Проверить статус операции</a></li>
+        <li>
+            <div class="custom-select">
+                <select name="language" id="languageSwitcher">
+                </select>
+            </div>
+        </li>
+        <li>
+            <a href="/login" class="nav-link px-2 link-dark user-cabinet__outter">
+                <div class="user-cabinet"></div>
+            </a>
+        </li>
+        <li><a class="nav-link px-2 buttons__color-outline diplay-center-flex" id="logout" data-i18n="head.exit">Выход</a></li>
+     
+        </ul>
+			</nav>
+      <div class="navMobile">
+          <a href="#" id="navButton">
+            <div></div>
+          </a>
+      </div>
+     </a>
+  </header>
