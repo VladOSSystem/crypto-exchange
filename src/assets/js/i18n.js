@@ -24,7 +24,8 @@ const lngs = {
       // for all options read: https://www.i18next.com/overview/configuration-options
       .init({
         debug: true,
-        fallbackLng: 'en',
+        fallbackLng: 'ua',
+        lng: 'ua',
         resources: {
           ua: {
             translation: {

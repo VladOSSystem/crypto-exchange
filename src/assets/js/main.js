@@ -826,7 +826,11 @@ if (window.location.pathname == '/login') {
           'Accept': 'application/json'
         }
       })
-      .then(r => window.location.href = '/cabinet')
+      .then(r => { 
+          if (r.data) {
+              window.location.href = '/cabinet'
+          }
+      })
     document.querySelector('#login').addEventListener('click', () => {
 
         let email = $("input[name*='login_email']").val();
