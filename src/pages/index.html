@@ -203,7 +203,7 @@
         </div>
         <div class="col-md-12">
             <div class="calculate-button">
-                <a class="buttons__color" id="calculate"><span id="calc-text">Рассчитать</span>
+                <a class="buttons__color" id="calculate"><span id="calc-text" data-i18n="calculator.modal.buttonCharge">Рассчитать</span>
                     <svg xmlns="http://www.w3.org/2000/svg" id="loading" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgba(245, 245, 245, 0); display: block;" width="204px" height="204px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
                         <circle cx="50" cy="50" fill="none" stroke="#ffffff" stroke-width="4" r="26" stroke-dasharray="122.52211349000194 42.840704496667314">
                           <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="0.46511627906976744s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
@@ -211,7 +211,7 @@
                         </svg>
                 </a>
                 <a class="buttons__color create-order" id="create-order">
-                    <span>Создать заявку</span>
+                    <span data-i18n="calculator.modal.buttonCreate">Создать заявку</span>
                 </a>
             </div>
             
@@ -422,74 +422,17 @@
 	<div class="sdtestBg2"></div>
 	<div class="sdtestBg3"></div>
 	<div class="slideshow">
-		
-		<div class="content"> <!-- slide 1 -->
-			<div class="thumbnail">
-                <img src="https://e7.pngegg.com/pngimages/442/477/png-clipart-computer-icons-user-profile-avatar-profile-heroes-profile-thumbnail.png" width="50px"> 
-			</div>
-			<div class="btnNtxt"> 
-				<div class="sdAllContent"> 
-					
-					<div class="sd_scroll">
-					<h1 class="sdCustomSliderHeadig">A wonderful, user-friendly HR solution! Farsight HR Solution helped us implement ESS (Employee Self Service) portal for our large enterprise, which made both employees and Human Resources more productive. User-oriented interface and professional team.</h1> 
-					</div>
-					<p class="SdClientName">Vice President</p>
-					<p class="SdClientDesc">CPF India</p>
-				</div>
-			</div>
-		</div>
-		
-		<div class="content"> <!-- slide 2 -->
-			<div class="thumbnail">
-                <img src="https://e7.pngegg.com/pngimages/442/477/png-clipart-computer-icons-user-profile-avatar-profile-heroes-profile-thumbnail.png" width="50px"> 
-        	</div>
-			<div class="btnNtxt"> 
-				<div class="sdAllContent"> 
-					
-					<div class="sd_scroll">
-					<h1 class="sdCustomSliderHeadig">For us, Farsight has become much more than a software solution provider. Farsight has been our helping hand with implementing business automation. The team's expertise, skill, and commitment to excellence are what makes them so great.</h1> 
-					</div>
-					<p class="SdClientName">Head IT</p>
-					<p class="SdClientDesc">Mushahi Auto Parts</p>
-				</div>
-			</div>
-		</div>
-	
-		<div class="content"> <!-- slide 3 -->
-			<div class="thumbnail">
-                <img src="https://e7.pngegg.com/pngimages/442/477/png-clipart-computer-icons-user-profile-avatar-profile-heroes-profile-thumbnail.png" width="50px"> 
-			</div>
-			<div class="btnNtxt"> 
-				<div class="sdAllContent"> 
-					
-					<div class="sd_scroll">
-					<h1 class="sdCustomSliderHeadig">I would like to place on record my sincere appreciation for helping us to automate the Salary Revision Exercise and also the Leave Management System at Schneider Electric India. We have had huge challenges in the past to manage these 2 complex exercises and it was a nightmare for HR every March/April. However when we engaged you and worked closely to develop a Software Tool customised for Schneider Electric, our lives have become very much easy. What used to be a pain for us became a huge gain for HR Shared Services.</h1> 
-					</div>
-					<p class="SdClientName">Vice President – India HR Services</p>
-					<p class="SdClientDesc">Schneider Electric</p>
-				</div>
-			</div>
-		</div>
-		
-		<div class="content"> <!-- slide 4 -->
-			<div class="thumbnail">
-                <img src="https://e7.pngegg.com/pngimages/442/477/png-clipart-computer-icons-user-profile-avatar-profile-heroes-profile-thumbnail.png" width="50px"> 
-			</div>
-			<div class="btnNtxt"> 
-				<div class="sdAllContent">
-					<div class="sd_scroll">
-					<h1 class="sdCustomSliderHeadig">With Farsight’s Employee Self Service Portal, our Vision of implementing an HR Software in Honda R&D (India) could be realized for the easy and smooth functioning of operations. Processes and Policies were well understood by the Team and extended a solution in the System, we look forward for more such customizations where customer is always given a priority. We wish them success for all the future endeavors. </h1>
-					</div>	
-					<p class="SdClientName">General Manager – Administration Head</p>
-					<p class="SdClientDesc">Honda R&D (India) Pvt. Ltd. </p>
-				</div>
-			</div>
-		</div>
-		
-		
+        <!--<div class="content"></div> -->
 	</div>
 </div>	
-<div class="spacer"></div>
+
+<div class="spacer mt-3">
+    <div class="col-md-12 d-flex justify-content-center">
+        <a class="buttons__color create-order" id="setReview">
+            <span data-i18n="calculator.modal.setReview">Создать заявку</span>
+        </a>
+    </div>
+</div>
 <div class="container-fluid carousel-here">
     <div class="container">
         <div class="row">
@@ -554,6 +497,54 @@
 </div>
 
 <!-- The Modal -->
+<div id="giveReview" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="form_wrapper">
+          <div class="form_container">
+            <div class="title_container">
+              <h2 data-i18n="calculator.modalReview.header"></h2>
+              <p class="order-flow"></p>
+            </div>
+            <div class="row clearfix">
+              <div class="">
+                <form>
+                  <div class="row clearfix">
+                      <div class="col_half">
+                        <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                          <input type="text" name="name2" data-i18n="[placeholder]calculator.modalReview.p1" />
+                        </div>
+                        <div class="notice-crypto" data-danger="client.first_name">
+                          <small class="text-danger"></small>      
+                        </div>
+                      </div>
+                      
+                      <div class="col_half">
+                        <div class="input_field"> <span><i aria-hidden="true" class="fa fa-podcast"></i></span>
+                          <input type="text" name="surname2" data-i18n="[placeholder]calculator.modalReview.p2" required />
+                        </div>
+                        <div class="notice-crypto" data-danger="client.last_name">
+                          <small class="text-danger"></small>      
+                        </div>
+                      </div>
+                     <textarea class="form-control" data-i18n="[placeholder]calculator.modalReview.p3" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+  
+                  <div class="create-order-btn">
+                      <a class="buttons__color create-order" id="setReviewClick" >
+                          <span data-i18n="calculator.modalReview.btn">Создать заявку</span>
+                      </a>              
+                  </div>
+               </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    </div>
+  </div>
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
@@ -562,7 +553,7 @@
     <div class="form_wrapper">
         <div class="form_container">
           <div class="title_container">
-            <h2>Заявка</h2>
+            <h2 data-i18n="calculator.modal.header">Заявка</h2>
             <p class="order-flow"></p>
           </div>
           <div class="row clearfix">
@@ -571,46 +562,67 @@
                 <div class="row clearfix">
                     <div class="col_half">
                       <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                        <input type="text" name="name" placeholder="Имя" />
+                        <input type="text" name="name" data-i18n="[placeholder]calculator.modal.p1" />
+                      </div>
+                      <div class="notice-crypto" data-danger="client.first_name">
+                        <small class="text-danger"></small>      
                       </div>
                     </div>
                     
                     <div class="col_half">
                       <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                        <input type="text" name="surname" placeholder="Фамилия" required />
+                        <input type="text" name="surname" data-i18n="[placeholder]calculator.modal.p2" required />
+                      </div>
+                      <div class="notice-crypto" data-danger="client.last_name">
+                        <small class="text-danger"></small>      
                       </div>
                     </div>
 
                     <div class="col_half">
                         <div class="input_field"> <span><i aria-hidden="true" class="fa fa-users"></i></span>
-                          <input type="text" name="patronicName" placeholder="Отчество" required />
+                          <input type="text" name="patronicName" data-i18n="[placeholder]calculator.modal.p3" required />
                         </div>
+                        <div class="notice-crypto" data-danger="client.middle_name">
+                            <small class="text-danger"></small>      
+                          </div>
                       </div>
 
                       <div class="col_half">
                         <div class="input_field"> <span><i aria-hidden="true" class="fa fa-phone"></i></span>
-                          <input type="text" name="phone" placeholder="Телефон" required />
+                          <input type="text" id="phone" name="phone" placeholder="38(067)000-0000"  required />
+                        </div>
+                        <div class="notice-crypto" data-danger="client.phone">
+                            <small class="text-danger"></small>      
                         </div>
                       </div>
                       <div class="col_half">
                         <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
                             <input type="email" name="email" placeholder="Email" required />
                         </div>
+                        <div class="notice-crypto" data-danger="client.email">
+                          <small class="text-danger"></small>      
+                        </div>
                       </div>
                   </div>
                 
                 <div class="input_field" id="cash"> <span><i aria-hidden="true" class="fa fa-hashtag"></i></span>
-                  <input type="text" name="hash" placeholder="Введите кошелек" required />
+                  <input type="text" name="hash" data-i18n="[placeholder]calculator.modal.p4" required />
+                </div>
+                <div class="notice-crypto" data-danger="address.hash">
+                    <small class="text-danger"></small>      
+                  </div>
+                <div class="notice-crypto">
+                    <small class="text-danger" data-i18n="calculator.modal.notice">The minimum amount in dollars must be more than 100 and less than 10000</small>      
                 </div>
                 <div class="input_field" id="card"> <span><i aria-hidden="true" class="fa fa-bank"></i></span>
-                    <input type="text" name="card" placeholder="Введите карту" required />
+                    <input type="text" name="card" data-i18n="[placeholder]calculator.modal.p5" required />
                 </div>
                 <div class="input_field" id="memo"> <span><i aria-hidden="true" class="fa fa-chevron-right"></i></span>
                   <input type="text" name="memo" placeholder="memo" required />
                 </div>
                 <div class="create-order-btn">
                     <a class="buttons__color create-order" id="create-order-last" >
-                        <span>Создать заявку</span>
+                        <span data-i18n="calculator.modal.buttonCreate">Создать заявку</span>
                     </a>              
                 </div>
              </form>

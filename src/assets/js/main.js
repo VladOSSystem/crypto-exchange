@@ -177,6 +177,41 @@ const cryptocurency = () => {
 
 ( () => {
     if (window.location.pathname == '/') {
+            axios.get(`${BASE_URL}/landing/reviews`)
+            .then(r => {
+                const slider = document.querySelector('.slideshow');
+                r.data.data.map(v => {
+                    slider.innerHTML += `
+                    <div class="content">
+                        <div class="thumbnail">
+                            <img src="https://e7.pngegg.com/pngimages/442/477/png-clipart-computer-icons-user-profile-avatar-profile-heroes-profile-thumbnail.png" width="50px"> 
+                        </div>
+                        <div class="btnNtxt"> 
+                            <div class="sdAllContent"> 
+                                
+                                <div class="sd_scroll">
+                                <h1 class="sdCustomSliderHeadig">${v.description}</h1> 
+                                </div>
+                                <p class="SdClientName">${v.title}</p>
+                                <p class="SdClientDesc">${v.client_name}</p>
+                            </div>
+                        </div>
+                    </div>
+                    `
+                    console.log(v)
+                })
+            })
+            .catch(e => {
+                console.log(e)
+            })
+
+
+        document.getElementById('phone').addEventListener('input', function (y) {
+            var a = y.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})/);
+            y.target.value = !a[3] ? a[1] + a[2] : a[1] + '(' + a[2] + ')' + a[3] + (a[4] ? '-' + a[4] : '');
+
+        });
+
         $('.buy-value-input').hide();
         function formatText (icon) {
             return $('<span>' + $(icon.element).data('icon') + icon.text + '</span>');
@@ -408,7 +443,6 @@ const cryptocurency = () => {
             $($('.select2-container--default')[2]).hide()
             $($('.select2-container--default')[1]).show()
         } else if (e.target.value == 'bank_give') {
-            console.log('here')
             $('#banks_selector').show();
             $('#cities_selector').hide();
             $($('.select2-container--default')[2]).show()
@@ -458,27 +492,46 @@ const cryptocurency = () => {
         $('#calc-text').show();
 
     }
+    let modalReview = document.getElementById('giveReview');
+    let btnReview = document.getElementById('setReview');
+    let span2 =  document.getElementsByClassName("close")[0];
+    btnReview.onclick = function() {
+        modalReview.style.display = "block";
+    }
+    span2.onclick = function() {
+        modalReview.style.display = "none";
+    }
+  
     let modal = document.getElementById("myModal");
     let btn = document.getElementById("create-order");
-    let span = document.getElementsByClassName("close")[0];
+    let span = document.getElementsByClassName("close")[1];
     btn.onclick = function() {
-    modal.style.display = "block";
+        modal.style.display = "block";
+        console.log('click', modal)
     }
     span.onclick = function() {
-    modal.style.display = "none";
+        modal.style.display = "none";
     }
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
+        if (event.target == modalReview) {
+            modalReview.style.display = "none";
+        }
     }
+    document.getElementById('setReviewClick').addEventListener('click', () => {
+        modalReview.style.display = "none";
+        $.notify(`Ok`, 'success');
+    })
     document.querySelector('#create-order-last').addEventListener('click', () => {
         const giveSelect = document.getElementById('give_selector');
         const takeSelect = document.getElementById('take_selector');
         let first_name = $("input[name='name']").val()
         let last_name = $("input[name='surname']").val()
         let middle_name = $("input[name='patronicName']").val()
-        let phone = $("input[name='phone']").val()
+        let phone_str = $("input[name='phone']").val()
+        let phone = phone_str.replace(/\D/g, "");
         let email = $("input[name='email']").val()
         let hash = $("input[name='hash']").val()
         let card = $("input[name='card']").val()
@@ -491,7 +544,6 @@ const cryptocurency = () => {
         const currency_to_id = Number(takeSelect.options[takeSelect.selectedIndex].value);
         const amount = Number(document.getElementById('giveInput').value);
 
-   
         const order = {};
         if ($('#give-fiat').is(':checked')) {
             if ($('#give-fiat-cash').is(':checked')) {
@@ -510,7 +562,6 @@ const cryptocurency = () => {
                order.bank_id = Number(bankCityTake.options[bankCityTake.selectedIndex].value);
             }
         }
-        console.log(card, card.length > 0 ? card : null)
         axios({
             url: `${BASE_URL}/landing/createOrder`,
             method: 'post',
@@ -556,8 +607,15 @@ const cryptocurency = () => {
            }, 2000);
         })
        .catch(error => {
-        Object.entries(error.response.data.errors).map(v => {
-            v[1].map(j => {
+        console.log(error.response.data.errors)
+        console.log($('div[data-danger="client.email"]'))
+
+        Object.entries(error.response.data.errors).map((v) => {
+            v[1].map((j, k) => {
+                $(`div[data-danger="${v[0]}"] > small`).text(j)
+                setTimeout(() => {
+                    $(`div[data-danger="${v[0]}"] > small`).text('');
+                }, 3000)
                 $.notify(`${j}: code 422`, 'error');
             })
         })
@@ -600,6 +658,9 @@ if (window.location.pathname == '/cabinet') {
             </th>
             <td>${v.created_at}</td>
             <td>${v.amount}</td>
+            <td>${v.currency_from.code} <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M0 8.00001C0 7.7348 0.105357 7.48044 0.292893 7.29291C0.48043 7.10537 0.734784 7.00001 1 7.00001H12.586L8.292 2.70801C8.10423 2.52024 7.99874 2.26556 7.99874 2.00001C7.99874 1.73446 8.10423 1.47979 8.292 1.29201C8.47977 1.10424 8.73445 0.998749 9 0.998749C9.26555 0.998749 9.52023 1.10424 9.708 1.29201L15.708 7.29201C15.8011 7.3849 15.875 7.49525 15.9254 7.61674C15.9758 7.73823 16.0018 7.86848 16.0018 8.00001C16.0018 8.13155 15.9758 8.26179 15.9254 8.38328C15.875 8.50477 15.8011 8.61512 15.708 8.70801L9.708 14.708C9.52023 14.8958 9.26555 15.0013 9 15.0013C8.73445 15.0013 8.47977 14.8958 8.292 14.708C8.10423 14.5202 7.99874 14.2656 7.99874 14C7.99874 13.7345 8.10423 13.4798 8.292 13.292L12.586 9.00001H1C0.734784 9.00001 0.48043 8.89466 0.292893 8.70712C0.105357 8.51958 0 8.26523 0 8.00001Z" fill="#3E3E3E"></path>
+        </svg> <span class="main_rate"></span>${v.currency_to.code}</td>
             <td>${v.rate}</td>
             <td>${v.sum}</td>
             <td> <span searchvalue="5" class="table-status table-status_${v.status.color}">${v.status.description}</span></td>
@@ -811,7 +872,6 @@ for (i = 0; i < l; i++) {
   /*for each element, create a new DIV that will act as the selected item:*/
   a = document.createElement("DIV");
   a.setAttribute("class", "select-selected");
-  console.log(a)
   a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
   x[i].appendChild(a);
   /*for each element, create a new DIV that will contain the option list:*/

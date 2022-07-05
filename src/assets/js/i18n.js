@@ -29,21 +29,39 @@ const lngs = {
           ua: {
             translation: {
               login: {
-                title: '',
-                p1: '',
-                p2: '',
-                p2_1: '',
-                btn: ''
+                title: 'Увійти до кабінету',
+                p1: 'Введіть E-mail',
+                p2: 'Введіть пароль',
+                btn: 'Увійти',
+                lins: {
+                  p0: 'Забули пароль?',
+                  p1: 'Немає облікового запису?  <a href="/register" class="link-color">Реєстрація</a>',
+                  p2_1: 'Реєстрація'
+                }
+              },
+              register: {
+                header: 'Реєстрація',
+                p1: 'Введіть Ім\'я',
+                p2: 'Введіть Призвище',
+                p3: 'Введіть По-батькові',
+                p4: 'Введіть номер телефону',
+                p5: 'Введіть E-mail',
+                p6: 'Введіть пароль',
+                p7: 'Повторіть пароль',
               },
               cabinet: {
                 title: 'Ваші транзакції',
+                modal: {
+                  header: 'Деталі заявки'
+                },
                 table: {
                   p1: 'ID заявки',
                   p2: 'Дата Обміну',
                   p3: 'Віддали',
                   p4: 'Курс', 
                   p5: 'Отримали',
-                  p6: 'Статус'
+                  p6: 'Статус',
+                  p7: 'Напрямок',
                 },
                 password: {
                   title: 'Змінити пароль',
@@ -82,6 +100,25 @@ const lngs = {
                   radio2: "Фіат",
                   radio3: "Готівка",
                   radio4: "Банк",
+                },
+                modal: {
+                  notice: "Звіряйте гаманець, адже неправильне введення призведе до втрати коштів",
+                  buttonCharge: 'Розрахувати',
+                  buttonCreate: 'Створити заявку',
+                  header: 'Заявка',
+                  p1: 'Ім\'я',
+                  p2: 'Призвіще',
+                  p3: 'По-батькові',
+                  p4: 'Введіть гаманець',
+                  p5: 'Введіть картку',
+                  setReview: 'Залишити відгук'
+                },
+                modalReview: {
+                  header: 'Відгук',
+                  p1: 'Ім\'я',
+                  p2: 'Заголовок',
+                  p3: 'Опис',
+                  btn: 'Надіслати'
                 }
               },
               whiteRow: {
@@ -139,15 +176,30 @@ const lngs = {
           },
           en: {
             translation: {
+              login: {
+                title: 'Log In',
+                p1: 'E-mail',
+                p2: 'Password',
+                btn: 'Log In',
+                lins: {
+                  p0: 'Forgot password?',
+                  p1: 'No account?  <a href="/register" class="link-color">Sign up</a>',
+                  p2_1: 'Sign up'
+                }
+              },
               cabinet: {
                 title: 'Your transactions',
+                modal: {
+                  header: 'Order detail'
+                },
                 table: {
                   p1: 'Application ID',
                   p2: 'Date of Exchange',
                   p3: 'Gave away',
                   p4: 'Rate', 
                   p5: 'Received',
-                  p6: 'Status'
+                  p6: 'Status',
+                  p7: 'Way'
                 },
                 password: {
                   title: 'Change password',
@@ -186,6 +238,25 @@ const lngs = {
                   radio2: "Fiat",
                   radio3: "Cash",
                   radio4: "Bank",
+                },
+                modal: {
+                  notice: "Check your wallet, because incorrect entry will lead to loss of funds",
+                  buttonCharge: 'Calculate',
+                  buttonCreate: 'Create an application',
+                  header: 'Application',
+                  p1: 'Name',
+                  p2: 'Surname',
+                  p3: 'Middle name',
+                  p4: 'Enter your wallet',
+                  p5: 'Enter your card',
+                  setReview: 'Review'
+                },
+                modalReview: {
+                  header: 'Rewiev',
+                  p1: 'Name',
+                  p2: 'Title',
+                  p3: 'Description',
+                  btn: 'Send'
                 }
               },
               whiteRow: {
@@ -243,15 +314,30 @@ const lngs = {
           },
           ru: {
             translation: {
+              login: {
+                title: 'Войти в кабинет',
+                p1: 'Введите E-mail',
+                p2: 'Введите пароль',
+                btn: 'Войти',
+                lins: {
+                  p0: 'Забыли пароль?',
+                  p1: 'Нет учетной записи?  <a href="/register" class="link-color">Регистрация</a>',
+                  p2_1: 'Регистрация'
+                }
+              },
               cabinet: {
                 title: 'Ваши транзакции',
+                modal: {
+                  header: 'Детали заявки'
+                },
                 table: {
                   p1: 'ID заявки	',
                   p2: 'Дата Обмена',
                   p3: 'Дата Обмена',
                   p4: 'Курс', 
                   p5: 'Получили',
-                  p6: 'Статус'
+                  p6: 'Статус',
+                  p7: 'Направление'
                 },
                 password: {
                   title: 'Изменить пароль',
@@ -290,6 +376,25 @@ const lngs = {
                   radio2: "Фиат",
                   radio3: "Наличные",
                   radio4: "Банк",
+                },
+                modal: {
+                  notice: "Проверьте свой кошелек, ведь неверный ввод приведет к потере средств",
+                  buttonCharge: 'Рассчитать',
+                  buttonCreate: 'Создать заявку',
+                  header: 'Заявка',
+                  p1: 'Имя',
+                  p2: 'Фамилия',
+                  p3: 'Отчество',
+                  p4: 'Введите кошелек',
+                  p5: 'Введите карту',
+                  setReview: 'Оставить отзыв'
+                },
+                modalReview: {
+                  header: 'Отзыв',
+                  p1: 'Имя',
+                  p2: 'Оглавление',
+                  p3: 'Описание',
+                  btn: 'Отправить'
                 }
               },
               whiteRow: {

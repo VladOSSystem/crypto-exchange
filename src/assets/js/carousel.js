@@ -1,4 +1,5 @@
-jQuery("#carousel").owlCarousel({
+window.addEventListener('load', () => {
+  jQuery("#carousel").owlCarousel({
     autoplay: true,
     rewind: true, /* use rewind if you don't want loop */
     animateOut: 'fadeOut',
@@ -12,8 +13,7 @@ jQuery("#carousel").owlCarousel({
     `,`
     <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 30.625C0 31.7853 0.460936 32.8981 1.28141 33.7186C2.10188 34.5391 3.21468 35 4.375 35H30.625C31.7853 35 32.8981 34.5391 33.7186 33.7186C34.5391 32.8981 35 31.7853 35 30.625V4.375C35 3.21468 34.5391 2.10188 33.7186 1.28141C32.8981 0.460936 31.7853 0 30.625 0L4.375 0C3.21468 0 2.10188 0.460936 1.28141 1.28141C0.460936 2.10188 0 3.21468 0 4.375L0 30.625ZM9.84375 16.4062H22.5159L17.8194 11.7119C17.614 11.5065 17.4986 11.2279 17.4986 10.9375C17.4986 10.6471 17.614 10.3685 17.8194 10.1631C18.0248 9.95775 18.3033 9.84237 18.5938 9.84237C18.8842 9.84237 19.1627 9.95775 19.3681 10.1631L25.9306 16.7256C26.0325 16.8272 26.1133 16.9479 26.1684 17.0808C26.2236 17.2137 26.252 17.3561 26.252 17.5C26.252 17.6439 26.2236 17.7863 26.1684 17.9192C26.1133 18.0521 26.0325 18.1728 25.9306 18.2744L19.3681 24.8369C19.1627 25.0423 18.8842 25.1576 18.5938 25.1576C18.3033 25.1576 18.0248 25.0423 17.8194 24.8369C17.614 24.6315 17.4986 24.3529 17.4986 24.0625C17.4986 23.7721 17.614 23.4935 17.8194 23.2881L22.5159 18.5938H9.84375C9.55367 18.5938 9.27547 18.4785 9.07035 18.2734C8.86523 18.0683 8.75 17.7901 8.75 17.5C8.75 17.2099 8.86523 16.9317 9.07035 16.7266C9.27547 16.5215 9.55367 16.4062 9.84375 16.4062Z" fill="#2E47E3"/>
-    </svg>
-    `],
+    </svg>`],
     width: 1200,
     smartSpeed: 1200,
     nav: true,
@@ -38,7 +38,7 @@ jQuery("#carousel").owlCarousel({
   jQuery("#carousel-2").owlCarousel({
     autoplay: true,
     rewind: true, /* use rewind if you don't want loop */
-     /*
+    /*
     animateOut: 'fadeOut',
     animateIn: 'fadeIn',
     */
@@ -100,15 +100,17 @@ jQuery("#carousel").owlCarousel({
   });
 
 
-/*
-Prevents animations and traansitions from firing when browser resized
-https://css-tricks.com/stop-animations-during-window-resizing/
-*/
-let resizeTimer;
-window.addEventListener("resize", () => {
-  document.body.classList.add("resize-animation-stopper");
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    document.body.classList.remove("resize-animation-stopper");
-  }, 400);
-});
+  /*
+  Prevents animations and traansitions from firing when browser resized
+  https://css-tricks.com/stop-animations-during-window-resizing/
+  */
+  let resizeTimer;
+  window.addEventListener("resize", () => {
+    document.body.classList.add("resize-animation-stopper");
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      document.body.classList.remove("resize-animation-stopper");
+    }, 400);
+  });
+
+})
