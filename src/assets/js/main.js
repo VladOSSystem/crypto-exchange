@@ -634,9 +634,11 @@ if (window.location.pathname == '/cabinet') {
     let span = document.getElementsByClassName("close")[0];
     let orderDetail = $('.order-detail');
     const user = JSON.parse(localStorage.getItem('user'));
-    const {first_name, last_name} = user.order.client;
-    const userInfo = document.getElementById('user_info');
-    userInfo.innerHTML = `${first_name} ${last_name}`
+    if (user) {
+        const {first_name, last_name} = user.order.client;
+        const userInfo = document.getElementById('user_info');
+        userInfo.innerHTML = `${first_name} ${last_name}`
+    }
     const getTransactions = () => {
     axios({
         url: `${BASE_URL}/cabinet/orders`,
