@@ -17,8 +17,9 @@ const lngs = {
     // https://www.i18next.com
     i18next
       // detect user language
+      // .use(i18nextHttpBackend)
       // learn more: https://github.com/i18next/i18next-browser-languageDetector
-      .use(i18nextBrowserLanguageDetector)
+      // .use(i18nextBrowserLanguageDetector)
       // init i18next
       // for all options read: https://www.i18next.com/overview/configuration-options
       .init({
