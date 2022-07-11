@@ -25,7 +25,6 @@ const lngs = {
       .init({
         debug: true,
         fallbackLng: 'ua',
-        lng: 'ua',
         resources: {
           ua: {
             translation: {
@@ -40,6 +39,11 @@ const lngs = {
                   p2_1: 'Реєстрація'
                 }
               },
+              modalRegister: {
+                header: 'Дякую за реєстрацію!',
+                under: 'На Ваш E-mail було надіслано листа для підтвердження реєстрації. Для завершення процесу створення облікового запису виконайте інструкції в листі',
+                btn: 'Перейти на пошту'
+              },
               register: {
                 header: 'Реєстрація',
                 p1: 'Введіть Ім\'я',
@@ -49,6 +53,9 @@ const lngs = {
                 p5: 'Введіть E-mail',
                 p6: 'Введіть пароль',
                 p7: 'Повторіть пароль',
+                btn: 'Зареєструватись',
+                underBtn: 'Є обліковий запис? <a href="/login" class="link-color">Увійти</a>',
+                underCondition1: 'Реєструючись, Ви погоджуєтесь з <a href="#" class="under-link">правилами використання</a> <a href="#" class="under-link">сайту</a> та даєте згоду на <a href="#" class="under-link">обробку персональних даних</a>',
               },
               cabinet: {
                 title: 'Ваші транзакції',
@@ -188,6 +195,24 @@ const lngs = {
                   p2_1: 'Sign up'
                 }
               },
+              register: {
+                header: 'Registration',
+                p1: 'Enter Name',
+                p2: 'Enter Surname',
+                p3: 'Enter Parental',
+                p4: 'Enter a phone number',
+                p5: 'Enter E-mail',
+                p6: 'Enter password',
+                p7: 'Repeat password',
+                btn: 'Sign up',
+                underBtn: 'Have an account? <a href="/login" class="link-color">Sign In</a>',
+                underCondition1: 'By registering, you agree to <a href="#" class="under-link">rules of use</a> <a href="#" class="under-link">webresource</a> and you agree to <a href="#" class="under-link">processing of personal data</a>',
+              },
+              modalRegister: {
+                header: 'Thank you for registering!',
+                under: 'A letter to confirm registration has been sent to your e-mail. Follow the instructions in the email to complete the account creation process',
+                btn: 'Go to mail'
+              },
               cabinet: {
                 title: 'Your transactions',
                 modal: {
@@ -325,6 +350,24 @@ const lngs = {
                   p1: 'Нет учетной записи?  <a href="/register" class="link-color">Регистрация</a>',
                   p2_1: 'Регистрация'
                 }
+              },
+              register: {
+                header: 'Регистрация',
+                p1: 'Введите Имя',
+                p2: 'Введите Фамилию',
+                p3: 'Введите Отчество',
+                p4: 'Введите номер телефона',
+                p5: 'Введите E-mail',
+                p6: 'Введите пароль',
+                p7: 'Повторите пароль',
+                btn: 'Регистрация',
+                underBtn: 'Есть ли учётная запись? <a href="/login" class="link-color">Войти</a>',
+                underCondition1: 'Регистрируясь, Вы соглашаетесь с <a href="#" class="under-link">правилам использования</a> <a href="#" class="under-link">сайта</a> и даете согласие на <a href="#" class="under-link">обработку персональных данных</a>',
+              },
+              modalRegister: {
+                header: 'Спасибо за регистрацию!',
+                under: 'На Ваш e-mail отправлено письмо для подтверждения регистрации. Следуйте инструкциям в письме, чтобы завершить процесс создания учетной записи.',
+                btn: 'Перейти на почту'
               },
               cabinet: {
                 title: 'Ваши транзакции',

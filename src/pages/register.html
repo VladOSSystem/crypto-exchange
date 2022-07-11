@@ -3,30 +3,48 @@
     <div class="row d-flex justify-content-center">
         <div class="col-md-6 col-sm-9 col-lg-9 col-xl-6 signUp">
             <div class="auth-login">
-                <h2>Регистрация</h2>
-                <input placeholder="Введите Имя" type="text" name="first_name"/>
-                <input placeholder="Введите фамилию" type="text" name="last_name"/>
-                <input placeholder="Введите отчество" type="text" name="middle_name"/>
-                <input placeholder="Введите номер телефона" type="number" name="phone"/>
-                <input placeholder="Введите E-mail" type="email" name="email" />
-                <input placeholder="Введить пароль" type="password" id="setPassword" name="setPassword"/>
-                <input placeholder="Повторите пароль" type="password" id="setPasswordRepeat" name="setPasswordRepeat"/>
+                <h2 data-i18n="register.header">Регистрация</h2>
+                <input data-i18n="[placeholder]register.p1" type="text" name="first_name"/>
+                <div class="notice-crypto" data-danger="first_name">
+                    <small class="text-danger"></small>      
+                </div>     
+                <input data-i18n="[placeholder]register.p2" type="text" name="last_name"/>
+                <div class="notice-crypto" data-danger="last_name">
+                    <small class="text-danger"></small>      
+                </div>     
+                <input data-i18n="[placeholder]register.p3" type="text" name="middle_name"/>
+                <div class="notice-crypto" data-danger="middle_name">
+                    <small class="text-danger"></small>      
+                </div>     
+                <input data-i18n="[placeholder]register.p4" id="phone" type="text" name="phone"/>
+                <div class="notice-crypto" data-danger="phone">
+                    <small class="text-danger"></small>      
+                </div>     
+                <input data-i18n="[placeholder]register.p5" type="email" name="email" />
+                <div class="notice-crypto" data-danger="email">
+                    <small class="text-danger"></small>      
+                </div>     
+                <input data-i18n="[placeholder]register.p6" type="password" id="setPassword" name="setPassword"/>
+                <div class="notice-crypto" data-danger="password">
+                    <small class="text-danger"></small>      
+                </div>     
+                <input data-i18n="[placeholder]register.p7"type="password" id="setPasswordRepeat" name="setPasswordRepeat"/>
                 <div class="show" onclick="showPassword(1)">
                     <i class="fa-solid fa-lock" id="passwordIconSet"></i>
                 </div>
                 <div class="show" onclick="showPassword(2)">
                     <i class="fa-solid fa-lock" id="passwordIconSetRepeat"></i>
                 </div>
-                <a href="#" class="login-button buttons__color" onclick="checkRegister()">Зарегистрироваться</a>
-                <p class="under-log">Есть учетная запись? <a href="/login" class="link-color">Войти</a></p>
-                <p class="under-condition">Регистрируясь, Вы соглашаетесь с <a href="#" class="under-link">правилами использования</a> <a href="#" class="under-link">сайта</a> и даете согласие на <a href="#" class="under-link">обработку персональных данных</a></p>
+                <a href="#" class="login-button buttons__color" onclick="checkRegister()" data-i18n="register.btn">Зарегистрироваться</a>
+                <p class="under-log" data-i18n="[html]register.underBtn">Есть учетная запись? <a href="/login" class="link-color">Войти</a></p>
+                <p class="under-condition" data-i18n="[html]register.underCondition1">Регистрируясь, Вы соглашаетесь с <a href="#" class="under-link">правилами использования</a> <a href="#" class="under-link">сайта</a> и даете согласие на <a href="#" class="under-link">обработку персональных данных</a></p>
             </div>
         </div>
         <div class="col-md-6 col-sm-9 col-lg-9 col-xl-6 showToggle">
             <div class="auth-login">
-                <h2>Спасибо за регистрацию!</h2>
-                <p class="success-registration">На Ваш E-mail было отправлено письмо для подтверждения регистрации. Для завершения процесса создания аккаунта следуйте инструкции в письме</p>
-                <a href="mailto:crypto@gmail.com" class="login-button buttons__color">Перейти на почту</a>
+                <h2 data-i18n="modalRegister.header">Спасибо за регистрацию!</h2>
+                <p class="success-registration" data-i18n="modalRegister.under">На Ваш E-mail было отправлено письмо для подтверждения регистрации. Для завершения процесса создания аккаунта следуйте инструкции в письме</p>
+                <a href="mailto:crypto@gmail.com" class="login-button buttons__color" data-i18n="modalRegister.btn">Перейти на почту</a>
             </div>
         </div>
     </div>

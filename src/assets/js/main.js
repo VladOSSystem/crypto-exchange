@@ -607,9 +607,6 @@ const cryptocurency = () => {
            }, 2000);
         })
        .catch(error => {
-        console.log(error.response.data.errors)
-        console.log($('div[data-danger="client.email"]'))
-
         Object.entries(error.response.data.errors).map((v) => {
             v[1].map((j, k) => {
                 $(`div[data-danger="${v[0]}"] > small`).text(j)
@@ -767,11 +764,17 @@ if (window.location.pathname == '/cabinet') {
 }
 
 if (window.location.pathname == '/register') {
+    document.getElementById('phone').addEventListener('input', function (y) {
+        var a = y.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,3})(\d{0,3})(\d{0,4})/);
+        y.target.value = !a[3] ? a[1] + a[2] : a[1] + '(' + a[2] + ')' + a[3] + (a[4] ? '-' + a[4] : '');
+
+    });
     const checkRegister = () => {
         let first_name = $("input[name*='first_name']").val();
         let last_name = $("input[name*='last_name']").val();
         let middle_name = $("input[name*='middle_name']").val();
-        let phone = $("input[name*='phone']").val();
+        let phone_str = $("input[name*='phone']").val();
+        let phone = phone_str.replace(/\D/g, "");
         let email = $("input[name*='email']").val();
         let password = $("input[name*='setPassword']").val();
         let password_confirmation = $("input[name*='setPasswordRepeat']").val();
@@ -803,9 +806,13 @@ if (window.location.pathname == '/register') {
                 }
             },
             error: (error) => {
-                Object.entries(error.responseJSON.errors).map(v => {
-                    v[1].map(j => {
-                        $.notify(`${j} code 422`, 'error');
+                Object.entries(error.responseJSON.errors).map((v) => {
+                    v[1].map((j, k) => {
+                        $(`div[data-danger="${v[0]}"] > small`).text(j)
+                        setTimeout(() => {
+                            $(`div[data-danger="${v[0]}"] > small`).text('');
+                        }, 4000)
+                        $.notify(`${j}: code 422`, 'error');
                     })
                 })
             }
@@ -835,7 +842,7 @@ if (window.location.pathname == '/login') {
 
         let email = $("input[name*='login_email']").val();
         let password = $("input[name*='login_password']").val();
-        $.ajax({
+        $.ajax({   
             type: 'POST',
             url: `${BASE_URL}/login`,
             dataType: 'json',
@@ -851,16 +858,19 @@ if (window.location.pathname == '/login') {
                 window.location.href = '/cabinet';
 
             },
-            error: (e) => {
+            error: (error) => {
+                Object.entries(error.responseJSON.errors).map((v) => {
+                    v[1].map((j, k) => {
+                        $(`div[data-danger="${v[0]}"] > small`).text(j)
+                        setTimeout(() => {
+                            $(`div[data-danger="${v[0]}"] > small`).text('');
+                        }, 4000)
+                        $.notify(`${j}: code 422`, 'error');
+                    })
+                })
                 $.notify(`Check password or email: code 403`, 'error');
             }
         })
-        // axios.post("http://127.0.0.1:8000/login", {
-        //     email,
-        //     password
-        // })
-        // .then(response => console.log(response))
-        // .catch(e => console.log(e))
     })
 }
 

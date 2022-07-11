@@ -5,7 +5,13 @@
             <div class="auth-login">
                 <h2 data-i18n="login.title">Войти в кабинет</h2>
                 <input placeholder="Введите E-mail" data-i18n="[placeholder]login.p1" name="login_email"/>
+                <div class="notice-crypto" data-danger="email">
+                    <small class="text-danger"></small>      
+                </div>      
                 <input placeholder="Введите пароль" data-i18n="[placeholder]login.p2" type="password" id="password" name="login_password" />
+                <div class="notice-crypto" data-danger="password">
+                    <small class="text-danger"></small>      
+                </div>     
                 <div class="show" onclick="showPassword()">
                     <i class="fa-solid fa-lock" id="passwordIcon"></i>
                 </div>
