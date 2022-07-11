@@ -1,6 +1,6 @@
 const lngs = {
     ua: { nativeName: 'UA' },
-    en: { nativeName: 'EN' },
+    en_US: { nativeName: 'EN' },
     ru: { nativeName: 'RU' }
   };
   
@@ -9,6 +9,7 @@ const lngs = {
     // https://github.com/i18next/jquery-i18next#usage-of-selector-function
     $('body').localize();
     $('title').text($.t('head.title'))
+    $('lang').text($.t('head.title'))
     $('meta[name=description]').attr('content', $.t('head.description'))
   }
   
@@ -17,9 +18,9 @@ const lngs = {
     // https://www.i18next.com
     i18next
       // detect user language
-      // .use(i18nextHttpBackend)
+      .use(i18nextHttpBackend)
       // learn more: https://github.com/i18next/i18next-browser-languageDetector
-      // .use(i18nextBrowserLanguageDetector)
+      .use(i18nextBrowserLanguageDetector)
       // init i18next
       // for all options read: https://www.i18next.com/overview/configuration-options
       .init({
