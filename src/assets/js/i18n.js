@@ -14,6 +14,7 @@ const lngs = {
   }
   
   $(function () {
+
     // use plugins and options as needed, for options, detail see
     // https://www.i18next.com
     i18next
@@ -25,6 +26,7 @@ const lngs = {
       // for all options read: https://www.i18next.com/overview/configuration-options
       .init({
         debug: true,
+        // cookie: false,
         fallbackLng: 'ua',
         resources: {
           ua: {
@@ -520,7 +522,6 @@ const lngs = {
             });
           }))
         })
-        
         rerender();
       });
-  });
+  }());
