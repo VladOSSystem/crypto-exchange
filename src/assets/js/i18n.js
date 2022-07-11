@@ -24,7 +24,7 @@ const lngs = {
       // init i18next
       // for all options read: https://www.i18next.com/overview/configuration-options
       .init({
-        debug: false,
+        debug: true,
         fallbackLng: 'ua',
         resources: {
           ua: {
@@ -501,7 +501,7 @@ const lngs = {
   
         // for options see
         // https://github.com/i18next/jquery-i18next#initialize-the-plugin
-        jqueryI18next.init(i18next, $);
+        jqueryI18next.init(i18next, $, { useOptionsAttr: true });
   
         // fill language switcher
         Object.keys(lngs).map((lng) => {
