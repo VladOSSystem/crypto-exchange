@@ -501,7 +501,7 @@ const lngs = {
   
         // for options see
         // https://github.com/i18next/jquery-i18next#initialize-the-plugin
-        jqueryI18next.init(i18next, $, { useOptionsAttr: true });
+        jqueryI18next.init(i18next, $);
   
         // fill language switcher
         Object.keys(lngs).map((lng) => {
