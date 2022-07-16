@@ -13,7 +13,7 @@ const lngs = {
     $('meta[name=description]').attr('content', $.t('head.description'))
   }
   
-  $(function () {
+const translate = () => {
 
     // use plugins and options as needed, for options, detail see
     // https://www.i18next.com
@@ -28,6 +28,7 @@ const lngs = {
         debug: true,
         // cookie: false,
         fallbackLng: 'ua',
+        onsuspend: false,
         resources: {
           ua: {
             translation: {
@@ -500,10 +501,9 @@ const lngs = {
         }
       }, (err, t) => {
         if (err) return console.error(err);
-  
+        console.log(t, err)
         // for options see
-        // https://github.com/i18next/jquery-i18next#initialize-the-plugin
-        jqueryI18next.init(i18next, $, { useOptionsAttr: true });
+        jqueryI18next.init(i18next, $, { useOptionsAttr: true, onsuspend: false });
   
         // fill language switcher
         Object.keys(lngs).map((lng) => {
@@ -524,4 +524,4 @@ const lngs = {
         })
         rerender();
       });
-  }());
+  };
