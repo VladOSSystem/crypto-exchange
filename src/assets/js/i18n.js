@@ -1,6 +1,6 @@
 const lngs = {
     ua: { nativeName: 'UA' },
-    en_US: { nativeName: 'EN' },
+    en: { nativeName: 'EN' },
     ru: { nativeName: 'RU' }
   };
   
@@ -28,7 +28,7 @@ const translate = () => {
         debug: true,
         // cookie: false,
         fallbackLng: 'ua',
-        onsuspend: false,
+        onsuspend: true,
         resources: {
           ua: {
             translation: {
@@ -503,7 +503,7 @@ const translate = () => {
         if (err) return console.error(err);
         console.log(t, err)
         // for options see
-        jqueryI18next.init(i18next, $, { useOptionsAttr: true, onsuspend: false });
+        jqueryI18next.init(i18next, $, { useOptionsAttr: true });
   
         // fill language switcher
         Object.keys(lngs).map((lng) => {
@@ -514,13 +514,21 @@ const translate = () => {
           $('#languageSwitcher').append(opt);
         });
         window.addEventListener('load', function () {
-          const hook = document.querySelectorAll('.all-items');
-          hook.forEach(v => v.addEventListener('click', (v) => {
-            const conceptName =  document.querySelectorAll('.selected-item')[0].textContent.toLocaleLowerCase();
-            i18next.changeLanguage(conceptName, () => {
-              rerender();
-            });
-          }))
+          const checkExist = setInterval(function() {
+            const hook = document.querySelectorAll('.all-items');
+            
+            if (hook.length !== 0) {
+              hook.forEach(v => v.addEventListener('click', (v) => {
+                const conceptName =  document.querySelectorAll('.selected-item')[0].textContent.toLocaleLowerCase();
+                console.log('click', conceptName)
+                i18next.changeLanguage(conceptName, () => {
+                  rerender();
+                });
+              }))
+               console.log("Exists!", hook);
+               clearInterval(checkExist);
+            }
+         }, 100); // 
         })
         rerender();
       });

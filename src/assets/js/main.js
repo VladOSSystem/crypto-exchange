@@ -95,6 +95,7 @@ function closeNav() {
                 .removeClass("arrowanim");
         });
     });
+    translate();
 })(jQuery);
 const banks = () => {
     return axios.get(`${BASE_URL}/landing/banks`)
@@ -957,5 +958,3 @@ function closeAllSelect(elmnt) {
 then close all select boxes:*/
 document.addEventListener("click", closeAllSelect);
 }
-
-translate();
